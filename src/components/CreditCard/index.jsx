@@ -16,21 +16,24 @@ function CreditCard({ name, number, date, cvc, side }) {
     >
       {side ? (
         <div className="wrapper">
-          <h1 className="cvc">{cvc}</h1>
+          <h1 className="cvc">{cvc.slice(0, 3)}</h1>
         </div>
       ) : (
         <>
           <img src={cardLogo} alt="card icon" />
           <section className="card__details">
             <h1 className="details__number">
-              {number.split("").map((e, index) => (
-                <span key={index}>{e}</span>
-              ))}
+              {number
+                .slice(0, 16)
+                .split("")
+                .map((e, index) => (
+                  <span key={index}>{e}</span>
+                ))}
             </h1>
             <footer>
               <h1>{name}</h1>
               <small>
-                {date.month}/{date.year}
+                {date.month.slice(0, 2)}/{date.year.slice(0, 2)}
               </small>
             </footer>
           </section>

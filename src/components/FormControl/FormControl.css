@@ -5,86 +5,93 @@
 --darkgrayishviolet: hsl(279, 6%, 55%);
 --verydarkviolet: hsl(278, 68%, 11%); */
 
-.forms > form {
+.forms {
   display: flex;
   flex-flow: column nowrap;
-  gap: 1.7rem;
-  width: 400px;
-  padding: 2rem;
+  max-width: 800px;
+  padding: 2em;
   text-transform: uppercase;
-  font-size: 14px;
   letter-spacing: 0.2ch;
 }
 
-div > label + input,
-.detail__wrapper {
-  margin-top: 0.5rem;
+.form__input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.8em;
 }
 
-.forms label,
-.forms fieldset {
+.form__input span {
+  display: none;
+  position: absolute;
+  bottom: -1.5em;
+  color: red;
+  letter-spacing: normal;
+  text-transform: lowercase;
+  font-size: 0.74em;
+}
+
+.form__input > label {
+  white-space: nowrap;
+  margin-bottom: 1em;
+}
+
+.forms label {
   color: var(--verydarkviolet);
   font-weight: 700;
 }
 
-fieldset {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  min-width: 0;
-}
-
 input {
+  position: relative;
   outline: none;
-  height: 2rem;
+  border: 0.15rem solid var(--lightgrayishviolet);
+  height: 2em;
   width: 100%;
-  border: 0.12rem solid var(--lightgrayishviolet);
-  border-radius: 0.3em;
-  padding: 1rem;
+  border-radius: 0.3rem;
+  padding: 1em;
+  font-size: 1em;
 }
 
 input:focus {
   border-color: var(--darkgrayishviolet);
 }
 
-.error,
-.error:focus {
+input:invalid[focused="true"] {
   border-color: var(--rederrors);
+}
+
+input:invalid[focused="true"] ~ span {
+  display: block;
 }
 
 .forms__detail {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  margin-bottom: 1.2em;
 }
 
-.detail__date {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-}
-
-.detail__wrapper {
+.form__input > div {
   display: grid;
-  gap: 1rem;
   grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
-.detail__date input {
-  width: 100%;
-}
-
-.forms > form > button {
+.form-button {
   border: none;
+  height: 3.3em;
+  border-radius: 0.7em;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1em;
+}
+
+.purple {
   background-color: var(--verydarkviolet);
   color: var(--white);
-  height: 3.3rem;
-  border-radius: 0.7rem;
-  cursor: pointer;
 }
 
-.forms > form > button:hover {
+.gray-onhover:hover {
   background-color: var(--lightgrayishviolet);
   color: var(--darkgrayishviolet);
 }

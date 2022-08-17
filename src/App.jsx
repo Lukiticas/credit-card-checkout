@@ -6,29 +6,42 @@ function App() {
   const [formInfo, setFormInfo] = useState({
     name: "",
     number: "",
-    date: {
-      month: "",
-      year: "",
-    },
+    month: "",
+    year: "",
     cvc: "",
   });
 
   return (
-    <div className="app">
+    <main className="app">
+      <div className="aside-image">
+        <picture>
+          <source
+            srcSet="./images/bg-main-mobile.png"
+            media="(max-width:  900px)"
+          />
+          <img src="./images/bg-main-desktop.png" alt="background" />
+        </picture>
+      </div>
       <aside className="card-wrapper">
         <CreditCard
           name={formInfo.name ? formInfo.name : "Jane Appleseed"}
           number={formInfo.number ? formInfo.number : "2123212321232123"}
           date={{
-            month: formInfo.date.month ? formInfo.date.month : "12",
-            year: formInfo.date.year ? formInfo.date.year : "12",
+            month: formInfo.month ? formInfo.month : "12",
+            year: formInfo.year ? formInfo.year : "12",
           }}
           side={false}
+          app
         />
-        <CreditCard cvc={formInfo.cvc ? formInfo.cvc : "123"} side={true} />
+        <CreditCard
+          cvc={formInfo.cvc ? formInfo.cvc.slice(0, 3) : "123"}
+          side={true}
+        />
       </aside>
-      <FormControl handleData={setFormInfo} data={formInfo} />
-    </div>
+      <section className="form-wrapper">
+        <FormControl handleData={setFormInfo} data={formInfo} />
+      </section>
+    </main>
   );
 }
 

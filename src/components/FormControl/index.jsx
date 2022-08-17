@@ -1,108 +1,105 @@
 import "./FormControl.css";
+import FormInput from "../FormInput";
 
-function FormControl({ handleData, data, isOnError }) {
-  const isComplete = true;
+function FormControl({ handleData, data }) {
+  const handleCardDisplay = (card) => {
+    const rawText = [...card.split(" ").join("")]; // Remove old space
+    const creditCard = []; // Create card as array
+    rawText.forEach((t, i) => {
+      if (i % 4 === 0) creditCard.push(" "); // Add space
+      creditCard.push(t);
+    });
+    return creditCard.join("");
+  };
+
+  const inputs = {
+    name: {
+      name: "name",
+      value: data.name,
+      type: "text",
+      id: "name",
+      placeholder: "e.g. Jane Appleseed",
+      required: true,
+      pattern: "^[ a-zA-Z ]*$",
+    },
+    number: {
+      value: handleCardDisplay(data.number),
+      type: "text",
+      name: "number",
+      id: "number",
+      placeholder: "e.g. 1234 5678 9101 1213",
+      required: true,
+      pattern: "[0-9 ]{0,20}",
+    },
+    month: {
+      value: data.month.slice(0, 2),
+      type: "number",
+      name: "month",
+      id: "month",
+      placeholder: "MM",
+      required: true,
+      min: "1",
+      max: "12",
+    },
+    year: {
+      value: data.year.slice(0, 2),
+      type: "number",
+      name: "year",
+      id: "year",
+      placeholder: "YY",
+      required: true,
+    },
+    cvc: {
+      value: data.cvc,
+      type: "number",
+      name: "cvc",
+      id: "cvc",
+      placeholder: "e.g. 123",
+      required: true,
+      max: "999",
+      min: "100",
+    },
+  };
 
   const handleChange = (target) => {
     let { name, value } = target;
-    if (name == "number") {
-      if (Number.isInteger(value)) {
-        return;
-      }
-      value = value.slice(0, 16);
-    }
-    if (["month", "year"].some((x) => x.includes(name))) {
-      value = value.slice(0, 2);
-    }
-    if (name == "cvc") {
-      value = value.slice(0, 3);
-    }
-    handleData((prev) => {
-      const newData =
-        name == "month" || name == "year"
-          ? { ...prev, date: { ...prev.date, [name]: value } }
-          : { ...prev, [name]: value };
-      return newData;
-    });
+    value = name == "number" ? value.split(" ").join("") : value;
+    handleData((prev) => ({ ...prev, [name]: value }));
   };
+
   return (
-    <section className="forms">
-      <form>
-        <div className="forms__name">
-          <label htmlFor="inputName">cardholder name</label>
-          <input
-            value={data.name}
-            onChange={({ target }) => {
-              handleChange(target);
-            }}
-            className=""
-            type="text"
-            name="name"
-            autoComplete="name"
-            id="inputName"
-            placeholder="e.g Jane Appleseed"
-          />
-        </div>
-        <div className="forms__number">
-          <label htmlFor="ccNumber">card number</label>
-          <input
-            value={data.number}
-            onChange={({ target }) => {
-              handleChange(target);
-            }}
-            className=""
-            id="ccNumber"
-            type="tel"
-            inputMode="numeric"
-            autoComplete="cc-number"
-            placeholder="0000 0000 0000 0000"
-            name="number"
-          />
-        </div>
-        <div className="forms__detail">
-          <div className="detail__date">
-            <label htmlFor="month">exp. date (mm/yy)</label>
-            <div className="detail__wrapper">
-              <input
-                value={data.date.month}
-                onChange={({ target }) => {
-                  handleChange(target);
-                }}
-                className=""
-                type="number"
-                name="month"
-                placeholder="MM"
-              />
-              <input
-                value={data.date.year.slice(0, 2)}
-                onChange={({ target }) => {
-                  handleChange(target);
-                }}
-                className=""
-                type="number"
-                name="year"
-                placeholder="YY"
-              />
-            </div>
-          </div>
-          <div className="detail__cvc">
-            <label htmlFor="cvcNumber">CVC</label>
-            <input
-              value={data.cvc.slice(0, 3)}
-              onChange={({ target }) => {
-                handleChange(target);
-              }}
-              className=""
-              type="number"
-              name="cvc"
-              id="cvcNumber"
-              placeholder="e.g. 123"
-            />
+    <form className="forms">
+      <div className="form__input">
+        <label htmlFor="name">name</label>
+        <FormInput callbackChange={handleChange} attrs={inputs.name} />
+
+        <span>this can't be blank/have numbers</span>
+      </div>
+
+      <div className="form__input">
+        <label htmlFor="number">number</label>
+        <FormInput callbackChange={handleChange} attrs={inputs.number} />
+        <span>Wrong Format, only numbers/max of 16</span>
+      </div>
+
+      <section className="forms__detail">
+        <div className="form__input">
+          <label htmlFor="name">exp. date (mm/yy)</label>
+          <div>
+            <FormInput callbackChange={handleChange} attrs={inputs.month} />
+            <FormInput callbackChange={handleChange} attrs={inputs.year} />
+
+            <span>Can't be blank</span>
           </div>
         </div>
-        <button>{isComplete ? "Confirm" : "Continue"}</button>
-      </form>
-    </section>
+        <div className="form__input">
+          <label htmlFor="cvc">CVC</label>
+          <FormInput callbackChange={handleChange} attrs={inputs.cvc} />
+          <span>Can't be blank / max of 3</span>
+        </div>
+      </section>
+      <button className="form-button purple gray-onhover">Confirm</button>
+    </form>
   );
 }
 
