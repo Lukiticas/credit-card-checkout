@@ -1,0 +1,19 @@
+.app {
+  min-height: 100vh;
+  max-width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card-wrapper {
+  height: 100%;
+
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+  z-index: 1;
+}
+
+.card-wrapper .card:first-child {
+  margin-left: auto;
+}

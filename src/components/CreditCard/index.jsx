@@ -23,8 +23,8 @@ function CreditCard({ name, number, date, cvc, side }) {
           <img src={cardLogo} alt="card icon" />
           <section className="card__details">
             <h1 className="details__number">
-              {number.split("").map((e) => (
-                <span key={Math.random() * parseInt(e)}>{e}</span>
+              {number.split("").map((e, index) => (
+                <span key={index}>{e}</span>
               ))}
             </h1>
             <footer>

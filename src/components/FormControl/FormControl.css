@@ -1,0 +1,90 @@
+/* --lineargradiendactive: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
+--rederrors: hsl(0, 100%, 66%);
+--white: hsl(0, 0%, 100%);
+--lightgrayishviolet: hsl(270, 3%, 87%);
+--darkgrayishviolet: hsl(279, 6%, 55%);
+--verydarkviolet: hsl(278, 68%, 11%); */
+
+.forms > form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.7rem;
+  width: 400px;
+  padding: 2rem;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.2ch;
+}
+
+div > label + input,
+.detail__wrapper {
+  margin-top: 0.5rem;
+}
+
+.forms label,
+.forms fieldset {
+  color: var(--verydarkviolet);
+  font-weight: 700;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+input {
+  outline: none;
+  height: 2rem;
+  width: 100%;
+  border: 0.12rem solid var(--lightgrayishviolet);
+  border-radius: 0.3em;
+  padding: 1rem;
+}
+
+input:focus {
+  border-color: var(--darkgrayishviolet);
+}
+
+.error,
+.error:focus {
+  border-color: var(--rederrors);
+}
+
+.forms__detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.detail__date {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail__wrapper {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.detail__date input {
+  width: 100%;
+}
+
+.forms > form > button {
+  border: none;
+  background-color: var(--verydarkviolet);
+  color: var(--white);
+  height: 3.3rem;
+  border-radius: 0.7rem;
+  cursor: pointer;
+}
+
+.forms > form > button:hover {
+  background-color: var(--lightgrayishviolet);
+  color: var(--darkgrayishviolet);
+}
