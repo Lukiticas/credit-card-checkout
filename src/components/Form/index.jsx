@@ -1,4 +1,4 @@
-import "./FormControl.css";
+import "./Form.css";
 import FormInput from "../FormInput";
 
 function FormControl({ handleData, data, handleComplete }) {

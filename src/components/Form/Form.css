@@ -1,10 +1,3 @@
-/* --lineargradiendactive: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
---rederrors: hsl(0, 100%, 66%);
---white: hsl(0, 0%, 100%);
---lightgrayishviolet: hsl(270, 3%, 87%);
---darkgrayishviolet: hsl(279, 6%, 55%);
---verydarkviolet: hsl(278, 68%, 11%); */
-
 .forms {
   display: flex;
   flex-flow: column nowrap;
@@ -28,6 +21,7 @@
   color: red;
   letter-spacing: normal;
   text-transform: lowercase;
+  white-space: nowrap;
   font-size: 0.74em;
 }
 

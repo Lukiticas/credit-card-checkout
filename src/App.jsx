@@ -1,6 +1,6 @@
 import "./styles/App.css";
 import CreditCard from "./components/CreditCard";
-import FormControl from "./components/FormControl";
+import FormControl from "./components/Form";
 import { useState } from "react";
 
 function App() {
