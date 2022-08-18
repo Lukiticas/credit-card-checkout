@@ -113,6 +113,7 @@ input:invalid[focused="true"] ~ span {
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .form__complete img {

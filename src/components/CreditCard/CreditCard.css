@@ -1,7 +1,7 @@
 .card {
   color: var(--white);
   width: 28.9em;
-  height: 15.9em;
+  height: 15.75em;
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
@@ -88,7 +88,7 @@
   font-size: 1.3em;
   letter-spacing: 0.2ch;
   position: absolute;
-  bottom: 5.7em;
+  bottom: 5.5em;
   right: 3.5em;
   font-weight: 500;
 }
