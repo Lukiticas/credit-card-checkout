@@ -89,12 +89,21 @@ function FormControl({ handleData, data }) {
           <div className="form__input">
             <label htmlFor="name">name</label>
             <FormInput callbackChange={handleChange} attrs={inputs.name} />
-            <span>this can't be blank/have numbers</span>
+            <span>
+              {data.name.split("").every((x) => Number.isInteger(x))
+                ? "Can't be blank"
+                : "Name can't have numbers"}
+            </span>
           </div>
           <div className="form__input">
             <label htmlFor="number">number</label>
             <FormInput callbackChange={handleChange} attrs={inputs.number} />
-            <span>Wrong Format, only 16 numbers</span>
+            <span>
+              {data.number.length > 16 ||
+              !data.number.split("").every((x) => Number.isInteger(x))
+                ? "no letters and be 16 characters"
+                : "can't be blank"}
+            </span>
           </div>
           <section className="forms__detail">
             <div className="form__input">
