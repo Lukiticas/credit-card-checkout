@@ -87,7 +87,7 @@ function FormControl({ handleData, data, handleComplete }) {
       ) : (
         <>
           <div className="form__input">
-            <label htmlFor="name">name</label>
+            <label htmlFor="name">cardholder name</label>
             <FormInput callbackChange={handleChange} attrs={inputs.name} />
             <span>
               {data.name.split("").every((x) => Number.isInteger(x))
@@ -96,7 +96,7 @@ function FormControl({ handleData, data, handleComplete }) {
             </span>
           </div>
           <div className="form__input">
-            <label htmlFor="number">number</label>
+            <label htmlFor="number">card number</label>
             <FormInput callbackChange={handleChange} attrs={inputs.number} />
             <span>
               {data.number.length > 16 ||
@@ -105,7 +105,7 @@ function FormControl({ handleData, data, handleComplete }) {
                 : "can't be blank"}
             </span>
           </div>
-          <section className="forms__detail">
+          <div className="forms__detail">
             <div className="form__input">
               <label htmlFor="name">exp. date (mm/yy)</label>
               <div>
@@ -125,7 +125,7 @@ function FormControl({ handleData, data, handleComplete }) {
                   : "Can't be blank"}
               </span>
             </div>
-          </section>
+          </div>
         </>
       )}
       <button className="form-button purple gray-onhover">

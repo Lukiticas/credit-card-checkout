@@ -31,8 +31,9 @@
 }
 
 .forms label {
+  font-size: 1rem;
   color: var(--verydarkviolet);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 input {

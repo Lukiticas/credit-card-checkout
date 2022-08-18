@@ -28,28 +28,28 @@
 
 .card__details {
   margin-top: auto;
-  height: 50%;
+  height: 45%;
   display: flex;
   flex-direction: column;
 }
 
 .details__number {
-  font-size: 200%;
+  font-size: 190%;
   letter-spacing: 0.1em;
   font-weight: 500;
   text-align: center;
 }
 
 .details__number span:nth-child(4) {
-  margin-right: 0.3em;
+  margin-right: 0.5em;
 }
 
 .details__number span:nth-child(8) {
-  margin-right: 0.3em;
+  margin-right: 0.5em;
 }
 
 .details__number span:nth-child(12) {
-  margin-right: 0.3em;
+  margin-right: 0.5em;
 }
 
 .card__details > footer {
@@ -57,13 +57,13 @@
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  font-size: 1.2em;
+  font-size: 1em;
   text-transform: uppercase;
   letter-spacing: 0.2ch;
   width: 100%;
 }
 
-.card__details > footer h1,
+.card__details > footer h3,
 .card__details > footer small {
   position: absolute;
   font-size: 1em;
@@ -72,11 +72,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  bottom: 1.95em;
+  bottom: 1.45em;
 }
 .card__details > footer small {
-  right: 3em;
-  bottom: 2em;
+  right: 2.5em;
+  bottom: 1.5em;
 }
 
 .wrapper {

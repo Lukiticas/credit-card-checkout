@@ -22,16 +22,16 @@ function CreditCard({ name, number, date, cvc, side }) {
         <>
           <img src={cardLogo} alt="" />
           <section className="card__details">
-            <h1 className="details__number">
+            <h2 className="details__number">
               {number
                 .slice(0, 16)
                 .split("")
                 .map((e, index) => (
                   <span key={index}>{e}</span>
                 ))}
-            </h1>
+            </h2>
             <footer>
-              <h1>{name}</h1>
+              <h3>{name}</h3>
               <small>
                 {date.month.slice(0, 2)}/{date.year.slice(0, 2)}
               </small>
