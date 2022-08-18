@@ -7,11 +7,12 @@
   align-items: flex-start;
   border-radius: 10px;
   padding-left: 2em;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   overflow: hidden;
   position: relative;
   animation: 1s ease-out 0s 1 entrance;
+  transition: right 500ms ease-in-out;
 }
 
 .card:hover {

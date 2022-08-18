@@ -7,7 +7,8 @@
 }
 
 :root {
-  --lineargradiendactive: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
+  --lineargradiendactiveone: hsl(249, 99%, 64%);
+  --lineargradiendactivetwo: hsl(278, 94%, 30%);
   --rederrors: hsl(0, 100%, 66%);
   --white: hsl(0, 0%, 100%);
   --lightgrayishviolet: hsl(270, 3%, 87%);
@@ -24,4 +25,107 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.card-wrapper {
+  position: relative;
+  min-width: 30vw;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3rem;
+  margin-left: 11vw;
+}
+
+.card:first-child {
+  margin-right: auto;
+}
+
+@media (min-width: 1550px) {
+  .form-wrapper {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .app {
+    flex-flow: column;
+  }
+
+  picture > img,
+  picture {
+    width: 100%;
+    max-height: 200px;
+  }
+
+  .card-wrapper {
+    width: 100%;
+    min-height: 200px;
+    align-items: center;
+    margin-left: 0;
+    font-size: 0.6rem;
+  }
+
+  .card:first-child {
+    position: absolute;
+    z-index: 1;
+    top: 9.5em;
+
+    left: 20%;
+  }
+
+  .card:last-child {
+    position: absolute;
+    top: 0.5em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card-wrapper {
+    font-size: 2.5vw;
+  }
+}
+
+@media (device-width: 820px) and (device-height: 1180px) {
+  .card-wrapper {
+    font-size: 1.8vw;
+  }
+  .card:last-child {
+    top: 0.5em;
+  }
+  .forms {
+    font-size: 1.7rem;
+  }
+}
+
+@media (device-width: 768px) and (device-height: 1024px) {
+  .card-wrapper {
+    font-size: 1.6vw;
+  }
+
+  .card:last-child {
+    top: 0.5em;
+  }
+  .forms {
+    font-size: 1.5rem;
+  }
+}
+@media (device-height: 1368px) {
+  .card-wrapper {
+    font-size: 1.6vw;
+  }
+
+  .card:last-child {
+    top: 0.5em;
+  }
+  .forms {
+    font-size: 1.5rem;
+  }
+}
+
+@media (device-height: 720px) and (device-width: 540px) {
+  .card-wrapper {
+    font-size: 1.8vw;
+  }
 }

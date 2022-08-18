@@ -1,15 +1,30 @@
 import "./FormControl.css";
 import FormInput from "../FormInput";
+import { useState } from "react";
 
 function FormControl({ handleData, data }) {
+  const [isGoingToContinue, setIsGoingToContinue] = useState(false);
+  const completeIcon = "./public/icon-complete.svg";
   const handleCardDisplay = (card) => {
-    const rawText = [...card.split(" ").join("")]; // Remove old space
-    const creditCard = []; // Create card as array
+    const rawText = [...card.split(" ").join("")];
+    const creditCard = [];
     rawText.forEach((t, i) => {
-      if (i % 4 === 0) creditCard.push(" "); // Add space
+      if (i % 4 === 0) creditCard.push(" ");
       creditCard.push(t);
     });
     return creditCard.join("");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (e.type === "submit") setIsGoingToContinue(true);
+    if (isGoingToContinue) setIsGoingToContinue(false);
+  };
+
+  const handleChange = (target) => {
+    let { name, value } = target;
+    value = name == "number" ? value.split(" ").join("") : value;
+    handleData((prev) => ({ ...prev, [name]: value }));
   };
 
   const inputs = {
@@ -29,7 +44,7 @@ function FormControl({ handleData, data }) {
       id: "number",
       placeholder: "e.g. 1234 5678 9101 1213",
       required: true,
-      pattern: "[0-9 ]{0,20}",
+      pattern: "[0-9 ]{20,20}",
     },
     month: {
       value: data.month.slice(0, 2),
@@ -61,44 +76,46 @@ function FormControl({ handleData, data }) {
     },
   };
 
-  const handleChange = (target) => {
-    let { name, value } = target;
-    value = name == "number" ? value.split(" ").join("") : value;
-    handleData((prev) => ({ ...prev, [name]: value }));
-  };
-
   return (
-    <form className="forms">
-      <div className="form__input">
-        <label htmlFor="name">name</label>
-        <FormInput callbackChange={handleChange} attrs={inputs.name} />
-
-        <span>this can't be blank/have numbers</span>
-      </div>
-
-      <div className="form__input">
-        <label htmlFor="number">number</label>
-        <FormInput callbackChange={handleChange} attrs={inputs.number} />
-        <span>Wrong Format, only numbers/max of 16</span>
-      </div>
-
-      <section className="forms__detail">
-        <div className="form__input">
-          <label htmlFor="name">exp. date (mm/yy)</label>
-          <div>
-            <FormInput callbackChange={handleChange} attrs={inputs.month} />
-            <FormInput callbackChange={handleChange} attrs={inputs.year} />
-
-            <span>Can't be blank</span>
+    <form className="forms" onSubmit={(e) => handleSubmit(e)}>
+      {isGoingToContinue ? (
+        <div className="form__complete">
+          <img src={completeIcon} alt="" />
+          <h2>thank you</h2>
+          <p>we've added your card details</p>
+        </div>
+      ) : (
+        <>
+          <div className="form__input">
+            <label htmlFor="name">name</label>
+            <FormInput callbackChange={handleChange} attrs={inputs.name} />
+            <span>this can't be blank/have numbers</span>
           </div>
-        </div>
-        <div className="form__input">
-          <label htmlFor="cvc">CVC</label>
-          <FormInput callbackChange={handleChange} attrs={inputs.cvc} />
-          <span>Can't be blank / max of 3</span>
-        </div>
-      </section>
-      <button className="form-button purple gray-onhover">Confirm</button>
+          <div className="form__input">
+            <label htmlFor="number">number</label>
+            <FormInput callbackChange={handleChange} attrs={inputs.number} />
+            <span>Wrong Format, only 16 numbers</span>
+          </div>
+          <section className="forms__detail">
+            <div className="form__input">
+              <label htmlFor="name">exp. date (mm/yy)</label>
+              <div>
+                <FormInput callbackChange={handleChange} attrs={inputs.month} />
+                <FormInput callbackChange={handleChange} attrs={inputs.year} />
+                <span>Can't be blank</span>
+              </div>
+            </div>
+            <div className="form__input">
+              <label htmlFor="cvc">CVC</label>
+              <FormInput callbackChange={handleChange} attrs={inputs.cvc} />
+              <span>Can't be blank</span>
+            </div>
+          </section>
+        </>
+      )}
+      <button className="form-button purple gray-onhover">
+        {isGoingToContinue ? "Continue" : "Confirm"}
+      </button>
     </form>
   );
 }

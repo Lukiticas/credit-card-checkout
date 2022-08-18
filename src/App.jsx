@@ -1,7 +1,8 @@
 import "./styles/App.css";
 import CreditCard from "./components/CreditCard";
-import { useState, useEffect } from "react";
 import FormControl from "./components/FormControl";
+import { useState } from "react";
+
 function App() {
   const [formInfo, setFormInfo] = useState({
     name: "",
@@ -13,15 +14,13 @@ function App() {
 
   return (
     <main className="app">
-      <div className="aside-image">
-        <picture>
-          <source
-            srcSet="./images/bg-main-mobile.png"
-            media="(max-width:  900px)"
-          />
-          <img src="./images/bg-main-desktop.png" alt="background" />
-        </picture>
-      </div>
+      <picture>
+        <source
+          srcSet="./images/bg-main-mobile.png"
+          media="(max-width: 800px)"
+        />
+        <img src="./images/bg-main-desktop.png" alt="background" />
+      </picture>
       <aside className="card-wrapper">
         <CreditCard
           name={formInfo.name ? formInfo.name : "Jane Appleseed"}

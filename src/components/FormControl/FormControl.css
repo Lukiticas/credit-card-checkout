@@ -8,7 +8,7 @@
 .forms {
   display: flex;
   flex-flow: column nowrap;
-  max-width: 800px;
+  max-width: 500px;
   padding: 2em;
   text-transform: uppercase;
   letter-spacing: 0.2ch;
@@ -53,7 +53,14 @@ input {
 }
 
 input:focus {
-  border-color: var(--darkgrayishviolet);
+  background: linear-gradient(var(--white), var(--white)) padding-box,
+    linear-gradient(
+        to right,
+        var(--lineargradiendactiveone),
+        var(--lineargradiendactivetwo)
+      )
+      border-box;
+  border-color: transparent;
 }
 
 input:invalid[focused="true"] {
@@ -78,6 +85,7 @@ input:invalid[focused="true"] ~ span {
 }
 
 .form-button {
+  width: 100%;
   border: none;
   height: 3.3em;
   border-radius: 0.7em;
@@ -92,6 +100,38 @@ input:invalid[focused="true"] ~ span {
 }
 
 .gray-onhover:hover {
-  background-color: var(--lightgrayishviolet);
-  color: var(--darkgrayishviolet);
+  background: linear-gradient(
+    to right,
+    var(--lineargradiendactiveone),
+    var(--lineargradiendactivetwo)
+  );
+}
+
+.form__complete {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.form__complete img {
+  margin-bottom: 2rem;
+}
+
+.form__complete > h2 {
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.form__complete > h2:after {
+  content: "!";
+  width: 100%;
+}
+
+.form__complete > p {
+  font-size: normal;
+  letter-spacing: normal;
+  text-transform: lowercase;
 }

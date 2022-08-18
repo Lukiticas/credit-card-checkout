@@ -16,11 +16,11 @@ function CreditCard({ name, number, date, cvc, side }) {
     >
       {side ? (
         <div className="wrapper">
-          <h1 className="cvc">{cvc.slice(0, 3)}</h1>
+          <h2 className="cvc">{cvc.trim().slice(0, 3)}</h2>
         </div>
       ) : (
         <>
-          <img src={cardLogo} alt="card icon" />
+          <img src={cardLogo} alt="" />
           <section className="card__details">
             <h1 className="details__number">
               {number
