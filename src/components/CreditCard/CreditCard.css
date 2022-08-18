@@ -16,8 +16,8 @@
 }
 
 .card:hover {
-  transform: rotateY(10deg);
-  transition: transform 200ms ease-in;
+  transform: translate(20px) rotate(3deg);
+  transition: transform 300ms ease-in;
 }
 
 .card img:first-of-type {

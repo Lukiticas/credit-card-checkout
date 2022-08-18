@@ -3,12 +3,14 @@
   max-width: 100vw;
   display: flex;
   flex-flow: row;
+  overflow-x: hidden;
 }
 
 .form-wrapper {
   flex: 1;
   display: grid;
   place-items: center;
+  animation: 1s ease-out 0s 1 entrance;
 }
 
 picture > img,
@@ -34,4 +36,14 @@ picture {
 
 .card:first-child {
   margin-right: auto;
+}
+
+@keyframes appear {
+  0% {
+    transform: translateX(-10%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }

@@ -65,7 +65,7 @@ function FormControl({ handleData, data }) {
       required: true,
     },
     cvc: {
-      value: data.cvc,
+      value: data.cvc.slice(0, 3),
       type: "number",
       name: "cvc",
       id: "cvc",
@@ -120,7 +120,7 @@ function FormControl({ handleData, data }) {
               <label htmlFor="cvc">CVC</label>
               <FormInput callbackChange={handleChange} attrs={inputs.cvc} />
               <span>
-                {data.cvc.length > 3
+                {data.cvc.length < 3
                   ? "cvc format incorrect"
                   : "Can't be blank"}
               </span>
