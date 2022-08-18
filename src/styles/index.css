@@ -19,6 +19,7 @@
 body {
   font-family: "Space Grotesk", sans-serif;
   background-color: var(--white);
+  overflow-x: hidden;
 }
 
 input::-webkit-outer-spin-button,

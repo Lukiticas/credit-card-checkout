@@ -4,6 +4,7 @@ import FormControl from "./components/FormControl";
 import { useState } from "react";
 
 function App() {
+  const [isGoingToContinue, setIsGoingToContinue] = useState(false);
   const [formInfo, setFormInfo] = useState({
     name: "",
     number: "",
@@ -38,7 +39,14 @@ function App() {
         />
       </aside>
       <section className="form-wrapper">
-        <FormControl handleData={setFormInfo} data={formInfo} />
+        <FormControl
+          handleData={setFormInfo}
+          data={formInfo}
+          handleComplete={{
+            isGoingToContinue: isGoingToContinue,
+            setIsGoingToContinue: setIsGoingToContinue,
+          }}
+        />
       </section>
     </main>
   );
