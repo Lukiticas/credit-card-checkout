@@ -10,7 +10,7 @@
   flex: 1;
   display: grid;
   place-items: center;
-  animation: 1s ease-out 0s 1 entrance;
+  animation: 500ms ease-out 0s 1 entrance;
 }
 
 picture > img,
