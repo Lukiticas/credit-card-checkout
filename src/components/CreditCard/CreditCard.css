@@ -1,7 +1,7 @@
 .card {
   color: var(--white);
   width: 28.9em;
-  height: 16.25em;
+  height: 15.9em;
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
@@ -13,6 +13,7 @@
   position: relative;
   animation: 1s ease-out 0s 1 entrance;
   transition: right 500ms ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .card:hover {

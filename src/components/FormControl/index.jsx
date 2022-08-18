@@ -1,10 +1,13 @@
 import "./FormControl.css";
 import FormInput from "../FormInput";
 import { useState } from "react";
+import useWindowSize from "react-use/lib/useWindowSize";
+import Confetti from "react-confetti";
 
 function FormControl({ handleData, data }) {
+  const { width, height } = useWindowSize();
   const [isGoingToContinue, setIsGoingToContinue] = useState(false);
-  const completeIcon = "./public/icon-complete.svg";
+  const completeIcon = ".\\public\\images\\icon-complete.svg";
   const handleCardDisplay = (card) => {
     const rawText = [...card.split(" ").join("")];
     const creditCard = [];
@@ -80,6 +83,7 @@ function FormControl({ handleData, data }) {
     <form className="forms" onSubmit={(e) => handleSubmit(e)}>
       {isGoingToContinue ? (
         <div className="form__complete">
+          <Confetti width={width} height={height} />
           <img src={completeIcon} alt="" />
           <h2>thank you</h2>
           <p>we've added your card details</p>
