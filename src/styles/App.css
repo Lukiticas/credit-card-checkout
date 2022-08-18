@@ -20,3 +20,18 @@ picture {
 picture {
   position: absolute;
 }
+
+.card-wrapper {
+  position: relative;
+  min-width: 30vw;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3rem;
+  margin-left: 11vw;
+}
+
+.card:first-child {
+  margin-right: auto;
+}

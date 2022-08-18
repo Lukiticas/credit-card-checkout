@@ -42,7 +42,6 @@
 }
 
 input {
-  position: relative;
   outline: none;
   border: 0.15rem solid var(--lightgrayishviolet);
   height: 2em;

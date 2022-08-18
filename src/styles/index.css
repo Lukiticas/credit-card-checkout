@@ -27,21 +27,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.card-wrapper {
-  position: relative;
-  min-width: 30vw;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 3rem;
-  margin-left: 11vw;
-}
-
-.card:first-child {
-  margin-right: auto;
-}
-
 @media (min-width: 1550px) {
   .form-wrapper {
     font-size: 1.2rem;
@@ -51,6 +36,12 @@ input::-webkit-inner-spin-button {
 @media (max-width: 950px) {
   .app {
     flex-flow: column;
+  }
+
+  .form-wrapper {
+    flex: 0;
+    place-items: start center;
+    margin-top: 10vw;
   }
 
   picture > img,
@@ -70,20 +61,14 @@ input::-webkit-inner-spin-button {
   .card:first-child {
     position: absolute;
     z-index: 1;
-    top: 9.5em;
-
+    top: 12em;
     left: 20%;
-  }
-
-  .card:last-child {
-    position: absolute;
-    top: 0.5em;
   }
 }
 
 @media screen and (max-width: 600px) {
   .card-wrapper {
-    font-size: 2.5vw;
+    font-size: 0.6rem;
   }
 }
 
@@ -94,6 +79,10 @@ input::-webkit-inner-spin-button {
   .card:last-child {
     top: 0.5em;
   }
+  .form-wrapper {
+    flex: 1;
+  }
+
   .forms {
     font-size: 1.7rem;
   }
@@ -107,6 +96,11 @@ input::-webkit-inner-spin-button {
   .card:last-child {
     top: 0.5em;
   }
+
+  .form-wrapper {
+    place-items: center;
+    flex: 1;
+  }
   .forms {
     font-size: 1.5rem;
   }
@@ -118,6 +112,11 @@ input::-webkit-inner-spin-button {
 
   .card:last-child {
     top: 0.5em;
+  }
+
+  .form-wrapper {
+    place-items: center;
+    flex: 1;
   }
   .forms {
     font-size: 1.5rem;

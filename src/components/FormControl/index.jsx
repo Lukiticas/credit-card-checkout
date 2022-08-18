@@ -102,13 +102,19 @@ function FormControl({ handleData, data }) {
               <div>
                 <FormInput callbackChange={handleChange} attrs={inputs.month} />
                 <FormInput callbackChange={handleChange} attrs={inputs.year} />
-                <span>Can't be blank</span>
+                <span>
+                  {data.month > 12 ? "incorrect date" : "Can't be blank"}
+                </span>
               </div>
             </div>
             <div className="form__input">
               <label htmlFor="cvc">CVC</label>
               <FormInput callbackChange={handleChange} attrs={inputs.cvc} />
-              <span>Can't be blank</span>
+              <span>
+                {data.cvc.length > 3
+                  ? "cvc format incorrect"
+                  : "Can't be blank"}
+              </span>
             </div>
           </section>
         </>
