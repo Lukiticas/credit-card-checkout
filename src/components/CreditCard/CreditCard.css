@@ -16,6 +16,10 @@
   cursor: pointer;
 }
 
+.card label {
+  cursor: grab;
+}
+
 .card__number,
 .card__cvc,
 .card__name,

@@ -1,13 +1,22 @@
 import "./Form.css";
 import FormInput from "../FormInput";
+import { useState } from "react";
 
 function FormControl({ handleData, data, handleComplete }) {
+  const [onError, setOnError] = useState(false);
   const { isGoingToContinue, setIsGoingToContinue } = handleComplete;
   const completeIcon = "./images/icon-complete.svg";
   const currentyear = new Date()
     .getFullYear()
     .toString()
     .substring(-2);
+
+  const handleError = () => {
+    setOnError(true);
+    setTimeout(() => {
+      setOnError(false);
+    }, 100);
+  };
 
   const handleCardDisplay = (card) => {
     const rawText = [...card.split(" ").join("")];
@@ -30,9 +39,7 @@ function FormControl({ handleData, data, handleComplete }) {
     name === "year" && value < currentyear
       ? target.setCustomValidity("Invalid year")
       : target.setCustomValidity("");
-
     value = name == "number" ? value.split(" ").join("") : value;
-
     handleData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -45,7 +52,7 @@ function FormControl({ handleData, data, handleComplete }) {
       placeholder: "e.g. Jane Appleseed",
       required: true,
       pattern: "^[ a-zA-Z ]*$",
-      autocomplete: "cc-name",
+      autoComplete: "cc-name",
       inputMode: "text",
     },
     number: {
@@ -55,8 +62,8 @@ function FormControl({ handleData, data, handleComplete }) {
       id: "number",
       placeholder: "e.g. 1234 5678 9101 1213",
       required: true,
-      pattern: "[ 0-9 ]{20,20}",
-      autocomplete: "cc-number",
+      pattern: "[ 0-9 ]{19}",
+      autoComplete: "cc-number",
       inputMode: "numeric",
     },
     month: {
@@ -68,7 +75,7 @@ function FormControl({ handleData, data, handleComplete }) {
       required: true,
       min: "1",
       max: "12",
-      autocomplete: "cc-exp-month",
+      autoComplete: "cc-exp-month",
       inputMode: "numeric",
     },
     year: {
@@ -78,7 +85,7 @@ function FormControl({ handleData, data, handleComplete }) {
       id: "year",
       placeholder: "YY",
       required: true,
-      autocomplete: "cc-exp-year",
+      autoComplete: "cc-exp-year",
       inputMode: "numeric",
     },
     cvc: {
@@ -90,13 +97,16 @@ function FormControl({ handleData, data, handleComplete }) {
       required: true,
       max: "999",
       min: "100",
-      autocomplete: "cc-csc",
+      autoComplete: "cc-csc",
       inputMode: "numeric",
     },
   };
 
   return (
-    <form className="forms" onSubmit={(e) => handleSubmit(e)}>
+    <form
+      className={`forms ${onError ? "shake" : ""}`}
+      onSubmit={(e) => handleSubmit(e)}
+    >
       {isGoingToContinue ? (
         <div className="form__complete">
           <img src={completeIcon} alt="" />
@@ -126,7 +136,7 @@ function FormControl({ handleData, data, handleComplete }) {
           </div>
           <div className="forms__detail">
             <div className="form__input">
-              <label htmlFor="name">exp. date (mm/yy)</label>
+              <label htmlFor="month">exp. date (mm/yy)</label>
               <div>
                 <FormInput callbackChange={handleChange} attrs={inputs.month} />
                 <FormInput callbackChange={handleChange} attrs={inputs.year} />
@@ -151,7 +161,12 @@ function FormControl({ handleData, data, handleComplete }) {
           </div>
         </>
       )}
-      <button className="form-button purple gray-onhover">
+      <button
+        className="form-button purple gray-onhover"
+        onClick={() => {
+          if (!isGoingToContinue) handleError();
+        }}
+      >
         {isGoingToContinue ? "Continue" : "Confirm"}
       </button>
     </form>

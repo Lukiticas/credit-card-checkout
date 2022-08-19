@@ -12,7 +12,6 @@ function App() {
     year: "",
     cvc: "",
   });
-
   return (
     <main className="app">
       <picture>
@@ -29,7 +28,6 @@ function App() {
           month={formInfo.month}
           year={formInfo.year}
           side={false}
-          app
         />
         <CreditCard cvc={formInfo.cvc} side={true} />
       </aside>

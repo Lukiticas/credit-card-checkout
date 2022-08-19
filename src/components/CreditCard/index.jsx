@@ -26,18 +26,26 @@ function CreditCard(props) {
       }}
     >
       {props.side ? (
-        <h2 className="card__cvc">{cvc}</h2>
+        <label htmlFor="cvc">
+          <h2 className="card__cvc">{cvc}</h2>
+        </label>
       ) : (
         <>
           <img src={cardLogo} alt="" />
-          <h2 htmlFor="number" className="card__number">
-            {number.split("").map((e, index) => (
-              <span key={index}>{e}</span>
-            ))}
-          </h2>
-          <h3 className="card__name">{name}</h3>
+          <label htmlFor="number">
+            <h2 htmlFor="number" className="card__number">
+              {number.split("").map((e, index) => (
+                <span key={index}>{e}</span>
+              ))}
+            </h2>
+          </label>
+
+          <label htmlFor="name">
+            <h3 className="card__name">{name}</h3>
+          </label>
           <small className="card__date">
-            {month}/{year}
+            <label htmlFor="month">{month}</label>/
+            <label htmlFor="year">{year}</label>
           </small>
         </>
       )}
