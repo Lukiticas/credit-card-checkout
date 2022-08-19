@@ -20,7 +20,7 @@
   bottom: -1.5em;
   color: red;
   letter-spacing: normal;
-  text-transform: lowercase;
+  text-transform: none;
   white-space: nowrap;
   font-size: 0.74em;
 }
@@ -128,5 +128,4 @@ input:invalid[focused="true"] ~ span {
 .form__complete > p {
   font-size: normal;
   letter-spacing: normal;
-  text-transform: lowercase;
 }

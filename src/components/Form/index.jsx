@@ -12,7 +12,7 @@ function FormControl({ handleData, data, handleComplete }) {
       if (i % 4 === 0) creditCard.push(" ");
       creditCard.push(t);
     });
-    return creditCard.join("");
+    return creditCard.join("").slice(0, 20);
   };
 
   const handleSubmit = (e) => {
@@ -81,8 +81,8 @@ function FormControl({ handleData, data, handleComplete }) {
       {isGoingToContinue ? (
         <div className="form__complete">
           <img src={completeIcon} alt="" />
-          <h2>thank you</h2>
-          <p>we've added your card details</p>
+          <h2>Thank You</h2>
+          <p>We've added your card details</p>
         </div>
       ) : (
         <>
@@ -101,8 +101,8 @@ function FormControl({ handleData, data, handleComplete }) {
             <span>
               {data.number.length > 16 ||
               !data.number.split("").every((x) => Number.isInteger(x))
-                ? "no letters and be 16 characters"
-                : "can't be blank"}
+                ? "No letters and be 16 characters"
+                : "Can't be blank"}
             </span>
           </div>
           <div className="forms__detail">
@@ -112,7 +112,7 @@ function FormControl({ handleData, data, handleComplete }) {
                 <FormInput callbackChange={handleChange} attrs={inputs.month} />
                 <FormInput callbackChange={handleChange} attrs={inputs.year} />
                 <span>
-                  {data.month > 12 ? "incorrect date" : "Can't be blank"}
+                  {data.month > 12 ? "Incorrect date" : "Can't be blank"}
                 </span>
               </div>
             </div>
@@ -121,7 +121,7 @@ function FormControl({ handleData, data, handleComplete }) {
               <FormInput callbackChange={handleChange} attrs={inputs.cvc} />
               <span>
                 {data.cvc.length < 3
-                  ? "cvc format incorrect"
+                  ? "Cvc format incorrect"
                   : "Can't be blank"}
               </span>
             </div>

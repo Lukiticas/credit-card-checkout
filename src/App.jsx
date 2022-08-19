@@ -33,10 +33,7 @@ function App() {
           side={false}
           app
         />
-        <CreditCard
-          cvc={formInfo.cvc ? formInfo.cvc.slice(0, 3) : "123"}
-          side={true}
-        />
+        <CreditCard cvc={formInfo.cvc ? formInfo.cvc : "123"} side={true} />
       </aside>
       <section className="form-wrapper">
         <FormControl
