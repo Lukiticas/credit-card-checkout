@@ -18,7 +18,7 @@
   display: none;
   position: absolute;
   bottom: -1.5em;
-  color: red;
+  color: var(--rederrors);
   letter-spacing: normal;
   text-transform: none;
   white-space: nowrap;
@@ -44,6 +44,7 @@ input {
   border-radius: 0.3rem;
   padding: 1em;
   font-size: 1em;
+  transition: border-color 300ms ease-in-out;
 }
 
 input:focus {
@@ -65,17 +66,15 @@ input:invalid[focused="true"] ~ span {
   display: block;
 }
 
-.forms__detail {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.2em;
-}
-
+.forms__detail,
 .form__input > div {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+}
+
+.forms__detail {
+  margin-bottom: 1.2em;
 }
 
 .form-button {
@@ -86,6 +85,7 @@ input:invalid[focused="true"] ~ span {
   cursor: pointer;
   font-weight: 700;
   font-size: 1em;
+  transition: background 100ms ease-in-out;
 }
 
 .purple {
@@ -94,21 +94,19 @@ input:invalid[focused="true"] ~ span {
 }
 
 .gray-onhover:hover {
-  background: linear-gradient(
-    to right,
-    var(--lineargradiendactiveone),
-    var(--lineargradiendactivetwo)
-  );
+  background-color: var(--lineargradiendactivetwo);
+}
+
+.gray-onhover:active {
+  background-color: var(--lineargradiendactiveone);
 }
 
 .form__complete {
   width: 100%;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  display: grid;
+  place-items: center;
+  margin: 2rem 0;
+  animation: appear 100ms;
 }
 
 .form__complete img {

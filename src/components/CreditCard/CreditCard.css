@@ -1,20 +1,27 @@
 .card {
-  color: var(--white);
+  position: relative;
+
   width: 28.9em;
   height: 15.835em;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: flex-start;
-  border-radius: 10px;
-  padding-left: 2em;
+
+  border-radius: 0.5rem;
   background-size: contain;
   background-repeat: no-repeat;
   overflow: hidden;
-  position: relative;
+  color: var(--white);
+
   animation: 1s ease-out 0s 1 entrance;
   transition: right 500ms ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   cursor: pointer;
+}
+
+.card__number,
+.card__cvc,
+.card__name,
+.card__date,
+.card img {
+  position: absolute;
 }
 
 .card:hover {
@@ -24,74 +31,57 @@
 
 .card img:first-of-type {
   width: 6em;
-  margin-top: 1.7em;
+  top: 12%;
+  left: 7%;
 }
 
-.card__details {
-  margin-top: auto;
-  height: 45%;
-  display: flex;
-  flex-direction: column;
-}
-
-.details__number {
+.card__number {
   font-size: 190%;
   letter-spacing: 0.1em;
   font-weight: 500;
   text-align: center;
+  bottom: 33%;
+  left: 7%;
 }
 
-.details__number span:nth-child(4) {
+.card__number span:nth-child(4) {
   margin-right: 0.5em;
 }
 
-.details__number span:nth-child(8) {
+.card__number span:nth-child(8) {
   margin-right: 0.5em;
 }
 
-.details__number span:nth-child(12) {
+.card__number span:nth-child(12) {
   margin-right: 0.5em;
 }
 
-.card__details > footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  font-size: 1em;
-  text-transform: uppercase;
-  letter-spacing: 0.2ch;
-  width: 100%;
-}
-
-.card__details > footer h3,
-.card__details > footer small {
-  position: absolute;
+.card__name,
+.card__date {
   font-size: 1em;
   font-weight: 400;
+  text-transform: uppercase;
+  bottom: 1.9em;
+}
+
+.card__name {
+  left: 7%;
   max-width: 55%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  bottom: 1.45em;
-}
-.card__details > footer small {
-  right: 2.5em;
-  bottom: 1.5em;
 }
 
-.wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.card__date {
+  right: 2.5em;
 }
-.cvc {
+
+.card__cvc {
+  position: absolute;
   font-size: 1.3em;
   letter-spacing: 0.2ch;
-  position: absolute;
   bottom: 5.65em;
   right: 3.5em;
-  font-weight: 500;
 }
 
 @keyframes entrance {

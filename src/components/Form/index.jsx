@@ -4,15 +4,19 @@ import FormInput from "../FormInput";
 function FormControl({ handleData, data, handleComplete }) {
   const { isGoingToContinue, setIsGoingToContinue } = handleComplete;
   const completeIcon = "./images/icon-complete.svg";
+  const currentyear = new Date()
+    .getFullYear()
+    .toString()
+    .substring(-2);
 
   const handleCardDisplay = (card) => {
     const rawText = [...card.split(" ").join("")];
     const creditCard = [];
     rawText.forEach((t, i) => {
-      if (i % 4 === 0) creditCard.push(" ");
+      if (i % 4 === 0 && i !== 0) creditCard.push(" ");
       creditCard.push(t);
     });
-    return creditCard.join("").slice(0, 20);
+    return creditCard.join("").slice(0, 19);
   };
 
   const handleSubmit = (e) => {
@@ -23,7 +27,12 @@ function FormControl({ handleData, data, handleComplete }) {
 
   const handleChange = (target) => {
     let { name, value } = target;
+    name === "year" && value < currentyear
+      ? target.setCustomValidity("Invalid year")
+      : target.setCustomValidity("");
+
     value = name == "number" ? value.split(" ").join("") : value;
+
     handleData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -36,6 +45,8 @@ function FormControl({ handleData, data, handleComplete }) {
       placeholder: "e.g. Jane Appleseed",
       required: true,
       pattern: "^[ a-zA-Z ]*$",
+      autocomplete: "cc-name",
+      inputMode: "text",
     },
     number: {
       value: handleCardDisplay(data.number),
@@ -44,7 +55,9 @@ function FormControl({ handleData, data, handleComplete }) {
       id: "number",
       placeholder: "e.g. 1234 5678 9101 1213",
       required: true,
-      pattern: "[0-9 ]{20,20}",
+      pattern: "[ 0-9 ]{20,20}",
+      autocomplete: "cc-number",
+      inputMode: "numeric",
     },
     month: {
       value: data.month.slice(0, 2),
@@ -55,6 +68,8 @@ function FormControl({ handleData, data, handleComplete }) {
       required: true,
       min: "1",
       max: "12",
+      autocomplete: "cc-exp-month",
+      inputMode: "numeric",
     },
     year: {
       value: data.year.slice(0, 2),
@@ -63,6 +78,8 @@ function FormControl({ handleData, data, handleComplete }) {
       id: "year",
       placeholder: "YY",
       required: true,
+      autocomplete: "cc-exp-year",
+      inputMode: "numeric",
     },
     cvc: {
       value: data.cvc.slice(0, 3),
@@ -73,6 +90,8 @@ function FormControl({ handleData, data, handleComplete }) {
       required: true,
       max: "999",
       min: "100",
+      autocomplete: "cc-csc",
+      inputMode: "numeric",
     },
   };
 
@@ -112,7 +131,11 @@ function FormControl({ handleData, data, handleComplete }) {
                 <FormInput callbackChange={handleChange} attrs={inputs.month} />
                 <FormInput callbackChange={handleChange} attrs={inputs.year} />
                 <span>
-                  {data.month > 12 ? "Incorrect date" : "Can't be blank"}
+                  {data.month > 12 || data.year < currentyear
+                    ? `Incorrect date ${
+                        data.month > 12 || data.month <= 0 ? "(MM)" : ""
+                      } ${data.year < currentyear ? "(YY)" : ""} `
+                    : "can't be blank"}
                 </span>
               </div>
             </div>
@@ -121,7 +144,7 @@ function FormControl({ handleData, data, handleComplete }) {
               <FormInput callbackChange={handleChange} attrs={inputs.cvc} />
               <span>
                 {data.cvc.length < 3
-                  ? "Cvc format incorrect"
+                  ? "CVC format incorrect"
                   : "Can't be blank"}
               </span>
             </div>

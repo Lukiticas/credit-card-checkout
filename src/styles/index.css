@@ -37,6 +37,7 @@ input::-webkit-inner-spin-button {
 @media (max-width: 950px) {
   .app {
     flex-flow: column;
+    align-items: center;
   }
 
   .form-wrapper {
@@ -48,38 +49,59 @@ input::-webkit-inner-spin-button {
   picture > img,
   picture {
     width: 100%;
-    max-height: 200px;
+    max-height: max(200px, 7vh);
   }
 
   .card-wrapper {
-    width: 100%;
     min-height: 200px;
     align-items: center;
     margin-left: 0;
-    font-size: 0.45rem;
+    padding-left: 0;
+    width: 100%;
+    font-size: 0.55rem;
+  }
+
+  .card:first-child {
+    margin-right: 0;
   }
 
   .card:first-child {
     position: absolute;
     z-index: 1;
-    top: 13em;
-    left: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    right: 10%;
+    left: 0;
+    bottom: -4rem;
   }
-}
 
-@media screen and (max-width: 600px) {
-  .card-wrapper {
-    font-size: 0.55rem;
+  .card:last-child {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
   }
 }
 
 @media (device-width: 820px) and (device-height: 1180px) {
   .card-wrapper {
-    font-size: 1.8vw;
+    font-size: 1.7vw;
   }
+  .card:first-child {
+    top: 9rem;
+  }
+
+  picture > img,
+  picture {
+    width: 100%;
+    max-height: 300px;
+  }
+
   .card:last-child {
-    top: 0.5em;
+    top: 1rem;
   }
+
   .form-wrapper {
     flex: 1;
   }
@@ -94,8 +116,12 @@ input::-webkit-inner-spin-button {
     font-size: 1.6vw;
   }
 
+  .card:first-child {
+    top: 10em;
+  }
+
   .card:last-child {
-    top: 0.6em;
+    top: 1rem;
   }
 
   .form-wrapper {
@@ -111,8 +137,12 @@ input::-webkit-inner-spin-button {
     font-size: 1.6vw;
   }
 
+  .card:first-child {
+    top: 10em;
+  }
+
   .card:last-child {
-    top: 0.5em;
+    top: 1rem;
   }
 
   .form-wrapper {

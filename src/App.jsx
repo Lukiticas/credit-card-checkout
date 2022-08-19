@@ -24,16 +24,14 @@ function App() {
       </picture>
       <aside className="card-wrapper">
         <CreditCard
-          name={formInfo.name ? formInfo.name : "Jane Appleseed"}
-          number={formInfo.number ? formInfo.number : "2123212321232123"}
-          date={{
-            month: formInfo.month ? formInfo.month : "12",
-            year: formInfo.year ? formInfo.year : "12",
-          }}
+          name={formInfo.name}
+          number={formInfo.number}
+          month={formInfo.month}
+          year={formInfo.year}
           side={false}
           app
         />
-        <CreditCard cvc={formInfo.cvc ? formInfo.cvc : "123"} side={true} />
+        <CreditCard cvc={formInfo.cvc} side={true} />
       </aside>
       <section className="form-wrapper">
         <FormControl

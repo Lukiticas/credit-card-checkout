@@ -24,17 +24,16 @@ picture {
 
 .card-wrapper {
   position: relative;
-  min-width: 30vw;
+  width: clamp(400px, 55vw, 800px);
   display: flex;
-  flex-flow: column nowrap;
+  flex-direction: column;
   justify-content: center;
   align-items: flex-end;
   gap: 3rem;
-  margin-left: 11vw;
 }
 
 .card:first-child {
-  margin-right: auto;
+  margin-right: 7%;
 }
 
 @keyframes appear {

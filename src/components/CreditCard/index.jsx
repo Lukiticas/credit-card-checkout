@@ -1,11 +1,22 @@
 import "./CreditCard.css";
 
-function CreditCard({ name, number, date, cvc, side }) {
+function CreditCard(props) {
   const cardLogo = "./images/card-logo.svg";
-  const isSide = side ? "back" : "front";
-  const background = side
-    ? "./images/bg-card-back.png"
-    : "./images/bg-card-front.png";
+  const isSide = props.side ? "back" : "front";
+  const background = `./images/bg-card-${isSide}.png`;
+
+  //making my inputs prettier
+  const name = props.name || "Jane Appleseed";
+  const month = props.month?.slice(0, 2).padStart(2, "0");
+  const year = props.year?.slice(0, 2).padStart(2, "0");
+  const cvc = props.cvc
+    ?.trim()
+    .slice(0, 3)
+    .padStart(3, "0");
+  const number = props.number
+    ?.trim()
+    .slice(0, 16)
+    .padEnd(16, "0");
 
   return (
     <div
@@ -14,29 +25,20 @@ function CreditCard({ name, number, date, cvc, side }) {
         backgroundImage: `url(${background})`,
       }}
     >
-      {side ? (
-        <div className="wrapper">
-          <h2 className="cvc">{cvc.trim().slice(0, 3)}</h2>
-        </div>
+      {props.side ? (
+        <h2 className="card__cvc">{cvc}</h2>
       ) : (
         <>
           <img src={cardLogo} alt="" />
-          <section className="card__details">
-            <h2 className="details__number">
-              {number
-                .slice(0, 16)
-                .split("")
-                .map((e, index) => (
-                  <span key={index}>{e}</span>
-                ))}
-            </h2>
-            <footer>
-              <h3>{name}</h3>
-              <small>
-                {date.month.slice(0, 2)}/{date.year.slice(0, 2)}
-              </small>
-            </footer>
-          </section>
+          <h2 htmlFor="number" className="card__number">
+            {number.split("").map((e, index) => (
+              <span key={index}>{e}</span>
+            ))}
+          </h2>
+          <h3 className="card__name">{name}</h3>
+          <small className="card__date">
+            {month}/{year}
+          </small>
         </>
       )}
     </div>
