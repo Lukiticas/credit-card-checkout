@@ -62,7 +62,6 @@ function FormControl({ handleData, data }) {
       required: true,
       pattern: "^[ a-zA-Z ]*$",
       autoComplete: "cc-name",
-      inputMode: "text",
     },
     number: {
       value: handleCardDisplay(data.number),
@@ -73,7 +72,6 @@ function FormControl({ handleData, data }) {
       required: true,
       pattern: "[ 0-9 ]{19}",
       autoComplete: "cc-number",
-      inputMode: "numeric",
     },
     month: {
       value: data.month.slice(0, 2),
@@ -85,7 +83,6 @@ function FormControl({ handleData, data }) {
       min: "1",
       max: "12",
       autoComplete: "cc-exp-month",
-      inputMode: "numeric",
     },
     year: {
       value: data.year.slice(0, 2),
@@ -95,7 +92,6 @@ function FormControl({ handleData, data }) {
       placeholder: "YY",
       required: true,
       autoComplete: "cc-exp-year",
-      inputMode: "numeric",
     },
     cvc: {
       value: data.cvc.slice(0, 3),
@@ -107,7 +103,6 @@ function FormControl({ handleData, data }) {
       max: "999",
       min: "100",
       autoComplete: "cc-csc",
-      inputMode: "numeric",
     },
   };
 
