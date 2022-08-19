@@ -28,12 +28,16 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+/* breaking points */
+
+/* big screens */
 @media (min-width: 1550px) {
   .form-wrapper {
     font-size: 1.2rem;
   }
 }
 
+/* general mobile */
 @media (max-width: 950px) {
   .app {
     flex-flow: column;
@@ -84,6 +88,28 @@ input::-webkit-inner-spin-button {
   }
 }
 
+/* galaxy fold */
+@media screen and (max-width: 280px) {
+  .form-wrapper {
+    font-size: 0.7rem;
+  }
+
+  .card-wrapper {
+    width: 100%;
+    font-size: 0.5rem;
+  }
+  .card {
+    left: 0;
+    right: 0;
+  }
+
+  .card:first-child {
+    bottom: -5em;
+  }
+}
+
+/* small tablet */
+
 @media (device-width: 820px) and (device-height: 1180px) {
   .card-wrapper {
     font-size: 1.7vw;
@@ -111,6 +137,8 @@ input::-webkit-inner-spin-button {
   }
 }
 
+/* large tablet */
+
 @media (device-width: 768px) and (device-height: 1024px) {
   .card-wrapper {
     font-size: 1.6vw;
@@ -132,6 +160,8 @@ input::-webkit-inner-spin-button {
     font-size: 1.5rem;
   }
 }
+
+/* big tables */
 @media (device-height: 1368px) {
   .card-wrapper {
     font-size: 1.6vw;
@@ -153,6 +183,8 @@ input::-webkit-inner-spin-button {
     font-size: 1.5rem;
   }
 }
+
+/* this two for ipad and galaxy */
 
 @media (device-height: 720px) and (device-width: 540px) {
   .card-wrapper {

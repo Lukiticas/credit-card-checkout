@@ -4,7 +4,7 @@ import FormControl from "./components/Form";
 import { useState } from "react";
 
 function App() {
-  const [isGoingToContinue, setIsGoingToContinue] = useState(false);
+  //form data for inputs value and cards rendering
   const [formInfo, setFormInfo] = useState({
     name: "",
     number: "",
@@ -32,14 +32,7 @@ function App() {
         <CreditCard cvc={formInfo.cvc} side={true} />
       </aside>
       <section className="form-wrapper">
-        <FormControl
-          handleData={setFormInfo}
-          data={formInfo}
-          handleComplete={{
-            isGoingToContinue: isGoingToContinue,
-            setIsGoingToContinue: setIsGoingToContinue,
-          }}
-        />
+        <FormControl handleData={setFormInfo} data={formInfo} />
       </section>
     </main>
   );

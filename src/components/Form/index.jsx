@@ -2,15 +2,20 @@ import "./Form.css";
 import FormInput from "../FormInput";
 import { useState } from "react";
 
-function FormControl({ handleData, data, handleComplete }) {
+function FormControl({ handleData, data }) {
   const [onError, setOnError] = useState(false);
-  const { isGoingToContinue, setIsGoingToContinue } = handleComplete;
+  const [isGoingToContinue, setIsGoingToContinue] = useState(false);
+
+  //icon for the application
   const completeIcon = "./images/icon-complete.svg";
+
+  //current year for date's input validation
   const currentyear = new Date()
     .getFullYear()
     .toString()
     .substring(-2);
 
+  //handle error for shake effect
   const handleError = () => {
     setOnError(true);
     setTimeout(() => {
@@ -18,6 +23,7 @@ function FormControl({ handleData, data, handleComplete }) {
     }, 100);
   };
 
+  //add a space after 4 digits in the number's input
   const handleCardDisplay = (card) => {
     const rawText = [...card.split(" ").join("")];
     const creditCard = [];
@@ -28,12 +34,14 @@ function FormControl({ handleData, data, handleComplete }) {
     return creditCard.join("").slice(0, 19);
   };
 
+  /* submit will only have a type, or any value, when all its inputs are correctly filled */
   const handleSubmit = (e) => {
     e.preventDefault();
     if (e.type === "submit") setIsGoingToContinue(true);
     if (isGoingToContinue) setIsGoingToContinue(false);
   };
 
+  //set state for card's data
   const handleChange = (target) => {
     let { name, value } = target;
     name === "year" && value < currentyear
@@ -43,6 +51,7 @@ function FormControl({ handleData, data, handleComplete }) {
     handleData((prev) => ({ ...prev, [name]: value }));
   };
 
+  //list of inputs to be rendered in screen
   const inputs = {
     name: {
       name: "name",
@@ -117,6 +126,9 @@ function FormControl({ handleData, data, handleComplete }) {
         <>
           <div className="form__input">
             <label htmlFor="name">cardholder name</label>
+            {
+              //i had to make a input component because it'd got polluited
+            }
             <FormInput callbackChange={handleChange} attrs={inputs.name} />
             <span>
               {data.name.split("").every((x) => Number.isInteger(x))
@@ -141,6 +153,9 @@ function FormControl({ handleData, data, handleComplete }) {
                 <FormInput callbackChange={handleChange} attrs={inputs.month} />
                 <FormInput callbackChange={handleChange} attrs={inputs.year} />
                 <span>
+                  {
+                    //There must be a easier way to do these validations
+                  }
                   {data.month > 12 || data.year < currentyear
                     ? `Incorrect date ${
                         data.month > 12 || data.month <= 0 ? "(MM)" : ""
