@@ -14,7 +14,7 @@
   margin-bottom: 1.8em;
 }
 
-.shake > *:not(button) {
+.shake > *:not(button, .form__complete) {
   animation: shake 300ms;
 }
 
