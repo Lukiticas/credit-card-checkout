@@ -31,9 +31,9 @@ function App() {
         />
         <CreditCard cvc={formInfo.cvc} side={true} />
       </aside>
-      <section className="form-wrapper">
+      <div className="form-wrapper">
         <FormControl handleData={setFormInfo} data={formInfo} />
-      </section>
+      </div>
     </main>
   );
 }
