@@ -101,7 +101,7 @@ function FormControl({ handleData, data, handleComplete }) {
             <span>
               {data.number.length > 16 ||
               !data.number.split("").every((x) => Number.isInteger(x))
-                ? "No letters and be 16 characters"
+                ? "No letters and only 16 characters"
                 : "Can't be blank"}
             </span>
           </div>
